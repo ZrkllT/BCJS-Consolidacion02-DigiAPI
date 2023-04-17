@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Consolidación 02</title>
+  <link rel="stylesheet" type="text/css" href="./assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="./assets/css/leerApi.css">
+</head>
+<body>
+  <main>
+    <header class="container">
+      <div class="row">
+        <h1>Digi API</h1>
+        <div class="col-12 col-md-4">
+          <label for="idDigiLvl">Nivel Digimon</label>
+          <select id="idDigiLvl" class="form-control">
+            <option selected>Todos</option>
+          </select>
+        </div>
+        <div class="col-12 col-md-4">
+          <label for="idDigiName">Nombre Digimon</label>
+          <input id="idDigiName" type="text" class="form-control">
+        </div>
+        <div class="col-12 col-md-4">
+          <button id="idBtnBuscar" class="btn btn-primary col-12 col-md-4 mt-4">Buscar</button>
+        </div>
+        <hr class="mt-4">
+      </div>
+    </header>
+
+    <section class="container">
+      <table id="digiTable" class="table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Digimon</th>
+            <th>Foto</th>
+            <th>Nivel</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="errJumbotrom" class="container d-none">
+      <div class="bg-info text-white text-center p-4">
+        <h1>Digimon No Encontrado o no Existe</h1>
+        <h5>Verifique que el nombre este bien escrito</h5>
+      </div>
+    </section>
+
+    <section id="digiCard" class="container d-none">
+      <div id="digiCardSection" class="card">
+      </div>
+    </section>
+
+  </main>
+
+  <script type="text/javascript" src="./assets/bootstrap/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="./assets/js/jquery-3.6.4.min.js"></script>
+  <script type="text/javascript" src="./assets/js/leerApi.js"></script>
+</body>
+</html>
