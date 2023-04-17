@@ -22,7 +22,7 @@ function digiList(lvl,name){
                 <tr>
                   <td>${nro}</td>
                   <td>${item.name}</td>
-                  <td><img id='digiImg${nro}' src='${item.img}' name=${item.name} class='img-thumbnail'></td>
+                  <td><img id='digiImg${nro}' src='${item.img}' name=${item.name} alt="${item.level}" class='img-thumbnail'></td>
                   <td>${item.level}</td>
                 `)
             }
@@ -55,6 +55,7 @@ $(document).ready(function(){
         let lvlToFind = $('#idDigiLvl').val();
         $('#errJumbotrom').addClass('d-none');
         $('#digiCard').addClass('d-none')
+        $('#digiTable tbody').removeClass('d-none')
         if(lvlToFind != 'Todos'){
             document.getElementById('idDigiName').value = '';
             $('#idDigiName').prop('disabled', true);
@@ -67,6 +68,8 @@ $(document).ready(function(){
     $(document).on('click','#idBtnBuscar',function(){
         $('#errJumbotrom').addClass('d-none')
         $('#digiCard').addClass('d-none')
+        $('#digiTable tbody').removeClass('d-none')
+
         let lvlToFind = $('#idDigiLvl').val()
         let nameToFind = $('#idDigiName').val()
 
@@ -79,6 +82,7 @@ $(document).ready(function(){
     $(document).on('click','#errJumbotrom',function(){
         $('#errJumbotrom').addClass('d-none')
         $('#digiCard').addClass('d-none')
+        $('#digiTable tbody').removeClass('d-none')
         document.getElementById('idDigiName').value = '';
     })
 
@@ -86,50 +90,24 @@ $(document).ready(function(){
         digiId = $(this).attr('id')
         digiImg = $(this).attr('src')
         digiName = $(this).attr('name')
+        digiLvl = $(this).attr('alt')
 
         $('#digiCard').removeClass('d-none')
         $('#digiCardSection').html('')
         $('#digiCardSection').append(`
             <img id="${digiId}" src="${digiImg}" class="card-img-top img-thumbnail">
-            <div id="cardMovieBody" class="card-body">
+            <div id="digiCardBody" class="card-body">
               <h3 class="card-title">${digiName}</h3>
             </div>
-
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><strong>Nivel: </strong>${digiLvl}</li>
+            </ul>
             `)
+        $('#digiTable tbody').addClass('d-none')
+    })
+
+    $(document).on('click','#digiCardSection',function(){
+        $('#digiCard').addClass('d-none')
+        $('#digiTable tbody').removeClass('d-none')
     })
 })
-
-/*
-$('#cardMovie').append(`
-    <img id="imgMovie" src="${dataPelicula.poster}" class="card-img-top img-thumbnail">
-    <div id="cardMovieBody" class="card-body">
-      <h3 class="card-title">${dataPelicula.title}</h3>
-      <p class="card-text">${dataPelicula.synopsis}</p>
-    </div>
-    <ul class="list-group list-group-flush">
-        <li class="list-group-item"><strong>Título Romanizado:</strong> ${dataPelicula.hepburn}</li>
-        <li class="list-group-item"><strong>Año Estreno:</strong> ${dataPelicula.release}</li>
-        <li class="list-group-item"><strong>Director:</strong> ${dataPelicula.director}</li>
-        <li class="list-group-item"><a class="btn btn-primary">Más Información</a></li>
-    </ul>
-    `)
-    */
-
-//document.getElementById("prueba").value = "";
-/*
-$(document).querySelector('.img-thumbnail').forEach(elemento =>{
-    elemento.addEventListener('click', ele =>{
-        const idImg = ele.target.getAttribute('id')
-        console.log('click en: '+id)
-    })
-})
-*//*
-document
-    .getElementById("to_focus")
-    .addEventListener("keydown", function(event) {
-        if(event.ctrlKey && event.key === "z"){
-            // Hacer algo, tal vez deshacer
-        }
-    }
-});
-*/
