@@ -22,7 +22,7 @@ function digiList(lvl,name){
                 <tr>
                   <td>${nro}</td>
                   <td>${item.name}</td>
-                  <td><img id='digiImg${nro}' src='${item.img}' name=${item.name} alt="${item.level}" class='img-thumbnail'></td>
+                  <td><img id='digiImg${nro}' src='${item.img}' name=${item.name} alt="${item.level}" class='img-thumbnail' width="30%"></td>
                   <td>${item.level}</td>
                 `)
             }
