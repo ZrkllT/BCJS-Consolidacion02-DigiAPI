@@ -47,6 +47,21 @@ function digiLevels(){
     })
 }
 
+function digiBuscar(){
+    $('#errJumbotrom').addClass('d-none')
+    $('#digiCard').addClass('d-none')
+    $('#digiTable tbody').removeClass('d-none')
+
+    let lvlToFind = $('#idDigiLvl').val()
+    let nameToFind = $('#idDigiName').val()
+
+    if(lvlToFind == 'Todos'){
+        lvlToFind = ''
+    }
+    digiList(lvlToFind,nameToFind)
+}
+
+
 $(document).ready(function(){
     digiLevels()
 
@@ -57,6 +72,8 @@ $(document).ready(function(){
         $('#digiCard').addClass('d-none')
         $('#digiTable tbody').removeClass('d-none')
         if(lvlToFind != 'Todos'){
+            /* la api no permite hacer una busqueda por nombre + nivel, 
+            así que bloqueo la busqueda por nombre cuando selecciono un nivel*/
             document.getElementById('idDigiName').value = '';
             $('#idDigiName').prop('disabled', true);
         }else{
@@ -66,17 +83,13 @@ $(document).ready(function(){
     })
 
     $(document).on('click','#idBtnBuscar',function(){
-        $('#errJumbotrom').addClass('d-none')
-        $('#digiCard').addClass('d-none')
-        $('#digiTable tbody').removeClass('d-none')
-
-        let lvlToFind = $('#idDigiLvl').val()
-        let nameToFind = $('#idDigiName').val()
-
-        if(lvlToFind == 'Todos'){
-            lvlToFind = ''
+        digiBuscar()
+    })
+    
+    $(document).on('keypress','#idDigiName',function(k){
+        if(k.keyCode === 13){
+            digiBuscar()
         }
-        digiList(lvlToFind,nameToFind)
     })
 
     $(document).on('click','#errJumbotrom',function(){
